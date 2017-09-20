@@ -61,12 +61,19 @@
     - "{{ htpc_downloads_complete }}/series"
     - "{{ htpc_downloads_incomplete }}"
 
+- name: Create Watched Folders
+  file: path={{ item }} state=directory owner={{ htpc_user_username }} group={{ htpc_user_group }} mode=0777 recurse=yes
+  with_items:
+    - "{{ htpc_downloads_watched }}"
+
 - name: Create Processing Folders
   file: path={{ item }} state=directory owner={{ htpc_user_username }} group={{ htpc_user_group }} mode=0777 recurse=yes
   with_items:
     - "{{ htpc_downloads_incomplete }}/process/"
     - "{{ htpc_downloads_incomplete }}/process/movie"
     - "{{ htpc_downloads_incomplete }}/process/tv"
+
+
 
 # BLOCK: Configure avahi and avahi alias
 - block:
