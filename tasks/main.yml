@@ -79,13 +79,11 @@
 - block:
   
   - name: Install Avahi packages
-    apt: name={{ item }} state=installed update_cache=yes cache_valid_time=3600
-    with_items:
-      - avahi-daemon
-      - libnss-mdns
-      - python-avahi
-      - python-pip
-      - git
+    apt:
+      name: ['avahi-daemon', 'libnss-mdns', 'python-avahi', 'python-pip', 'git']
+      state: installed
+      update_cache: yes
+      cache_valid_time: 3600
 
   - name: Install avahi-aliases service
     pip: name='git+http://github.com/GR360RY/avahi-aliases' editable=false
