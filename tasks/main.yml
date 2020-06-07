@@ -81,7 +81,7 @@
   - name: Install Avahi packages
     apt:
       name: ['avahi-daemon', 'libnss-mdns', 'python-avahi', 'python-pip', 'git']
-      state: installed
+      state: present
       update_cache: yes
       cache_valid_time: 3600
 
